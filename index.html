@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>L'Étoile Café — Artisan Roastery & Patisserie</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        COMPLIMENTARY ARTISAN COOKIE WITH EVERY COFFEE ORDER &nbsp;|&nbsp; WE ARE OPEN TODAY TILL 10 PM
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <button class="menu-toggle-btn" id="mobile-menu-btn" aria-label="Toggle Navigation">
+                <i data-lucide="menu"></i>
+            </button>
+            <div class="brand-logo" onclick="navigateTo('home')">
+                L'ÉTOILE <span>CAFÉ</span>
+            </div>
+            <nav class="nav-links" id="nav-menu">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#menu" class="nav-link">Menu</a>
+                <a href="#beans" class="nav-link">Our Beans</a>
+                <a href="#about" class="nav-link">Our Story</a>
+                <a href="#contact" class="nav-link">Location</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn btn-primary" onclick="openReservationModal()">Book a Table</button>
+                <button class="icon-btn" id="cart-btn" title="View Order Bag">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="badge" id="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <span class="hero-tag">ARTISAN ROASTERY & PATISSERIE</span>
+                <h1>Crafted Coffee. <br><span class="highlight">Unforgettable Moments.</span></h1>
+                <p>Savor single-origin hand-pours, freshly baked French pastries, and an atmosphere designed to slow down time.</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary btn-lg">EXPLORE MENU</a>
+                    <button class="btn btn-outline btn-lg" onclick="openReservationModal()">RESERVE TABLE</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlights / Features -->
+        <section class="features-bar">
+            <div class="container features-grid">
+                <div class="feature-item">
+                    <i data-lucide="coffee"></i>
+                    <div>
+                        <h4>Single Origin Beans</h4>
+                        <p>Ethically sourced from high-altitude micro-lots</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i data-lucide="croissant"></i>
+                    <div>
+                        <h4>Baked Fresh Daily</h4>
+                        <p>Artisanal French pastries by our master bakers</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i data-lucide="sparkles"></i>
+                    <div>
+                        <h4>Cozy Ambiance</h4>
+                        <p>Warm aesthetics & garden patio seating</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Menu Section -->
+        <section id="menu" class="section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="subtitle">OUR CURATED SELECTION</span>
+                    <h2>ARTISANAL MENU</h2>
+                </div>
+
+                <!-- Menu Categories Filter -->
+                <div class="menu-categories" id="menu-categories">
+                    <button class="category-btn active" data-cat="all">All Items</button>
+                    <button class="category-btn" data-cat="espresso">Espresso Bar</button>
+                    <button class="category-btn" data-cat="cold">Cold Brews</button>
+                    <button class="category-btn" data-cat="pastry">Pastries</button>
+                    <button class="category-btn" data-cat="brunch">Brunch</button>
+                </div>
+
+                <!-- Menu Items Grid -->
+                <div class="menu-grid" id="menu-items-grid"></div>
+            </div>
+        </section>
+
+        <!-- Single Origin Beans Explorer -->
+        <section id="beans" class="section bg-secondary">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="subtitle">THE ROASTERY</span>
+                    <h2>OUR SINGLE ORIGIN BEANS</h2>
+                    <p style="color: #666; max-width: 600px; margin: 12px auto 0 auto;">Select an origin to explore our ethically sourced specialty coffee profiles.</p>
+                </div>
+
+                <div class="beans-explorer">
+                    <div class="beans-nav" id="beans-nav">
+                        <button class="bean-btn active" data-bean="ethiopia">Ethiopia Yirgacheffe</button>
+                        <button class="bean-btn" data-bean="colombia">Colombia Huila</button>
+                        <button class="bean-btn" data-bean="guatemala">Guatemala Antigua</button>
+                    </div>
+
+                    <div class="bean-details-card" id="bean-details">
+                        <!-- Rendered via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story / About Section -->
+        <section id="about" class="section">
+            <div class="container editorial-grid">
+                <div class="editorial-image">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=800" alt="Barista pouring coffee" />
+                </div>
+                <div class="editorial-text">
+                    <span class="subtitle">OUR CRAFT & PASSION</span>
+                    <h2>Every Cup Tells a Story</h2>
+                    <p>At L'Étoile Café, coffee is more than a morning routine — it is an art form. Founded in 2021, our roastery sources direct-trade micro-lots from sustainable family farms across Ethiopia, Colombia, and Guatemala.</p>
+                    <p>Our in-house roasters slow-roast each batch to unlock complex tasting notes, while our pastry chefs craft authentic French viennoiserie every morning before sunrise.</p>
+                    <div class="values-row">
+                        <div class="val-box">
+                            <h4>100%</h4>
+                            <p>Direct-Trade Coffee</p>
+                        </div>
+                        <div class="val-box">
+                            <h4>Organic</h4>
+                            <p>Local Ingredients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location & Hours Section -->
+        <section id="contact" class="section bg-secondary">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="subtitle">VISIT US</span>
+                    <h2>LOCATION & HOURS</h2>
+                </div>
+
+                <div class="location-grid">
+                    <div class="location-card">
+                        <i data-lucide="map-pin"></i>
+                        <h3>Our Roastery & Cafe</h3>
+                        <p>742 Boulevard Saint-Germain</p>
+                        <p>Paris, France 75005</p>
+                        <span class="location-note">Complimentary Valet Parking Available</span>
+                    </div>
+                    <div class="location-card">
+                        <i data-lucide="clock"></i>
+                        <h3>Opening Hours</h3>
+                        <p><strong>Mon – Fri:</strong> 7:00 AM – 9:00 PM</p>
+                        <p><strong>Sat – Sun:</strong> 8:00 AM – 10:00 PM</p>
+                        <span class="location-note">Kitchen closes 45 mins before closing</span>
+                    </div>
+                    <div class="location-card">
+                        <i data-lucide="phone"></i>
+                        <h3>Concierge & Inquiries</h3>
+                        <p>+33 (0)1 42 68 55 00</p>
+                        <p>concierge@letoilecafe.com</p>
+                        <button class="btn btn-outline btn-sm" onclick="openReservationModal()" style="margin-top:12px;">RESERVE A TABLE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shopping Bag Slide-out Drawer -->
+    <div class="drawer-overlay" id="cart-drawer-overlay">
+        <div class="drawer">
+            <div class="drawer-header">
+                <h3>Your Bag (<span id="cart-item-count">0</span>)</h3>
+                <button class="icon-btn" id="close-cart-btn"><i data-lucide="x"></i></button>
+            </div>
+            
+            <div class="drawer-body" id="cart-items-container">
+                <!-- Cart items rendered here -->
+            </div>
+
+            <div class="drawer-footer">
+                <div class="price-summary">
+                    <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+                    <div class="summary-row"><span>Tax (8%)</span><span id="cart-tax">$0.00</span></div>
+                    <div class="summary-row total"><span>Total</span><span id="cart-total">$0.00</span></div>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="handleCheckout()">PLACE ORDER FOR PICKUP</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reservation Modal -->
+    <div class="modal-overlay" id="reservation-modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeReservationModal()"><i data-lucide="x"></i></button>
+            <div class="modal-body">
+                <span class="subtitle">TABLE RESERVATION</span>
+                <h2>Book Your Experience</h2>
+                <form class="reservation-form" onsubmit="handleReservationSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" required placeholder="Jane Doe" />
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" required placeholder="+1 (555) 000-0000" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Time</label>
+                            <select required>
+                                <option value="">Select Time</option>
+                                <option>09:00 AM</option>
+                                <option>11:00 AM</option>
+                                <option>02:00 PM</option>
+                                <option>05:00 PM</option>
+                                <option>07:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Guests</label>
+                            <select required>
+                                <option>2 Guests</option>
+                                <option>3 Guests</option>
+                                <option>4 Guests</option>
+                                <option>5+ Guests</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Seating Preference</label>
+                            <select>
+                                <option>Indoor Dining Room</option>
+                                <option>Garden Patio</option>
+                                <option>Window Bar</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">CONFIRM RESERVATION</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="brand-logo" style="color:white;">L'ÉTOILE <span>CAFÉ</span></div>
+                <p style="color: #A09080; margin-top: 12px; font-size: 0.9rem;">Elevating coffee into an unforgettable sensory journey.</p>
+            </div>
+            <div class="footer-col">
+                <h4>QUICK LINKS</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#beans">Roastery</a></li>
+                    <li><a href="#about">Story</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>NEWSLETTER</h4>
+                <p style="color:#A09080; font-size:0.85rem;">Subscribe to receive exclusive coffee tasting invites.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed to L\'Étoile Cafe newsletter!');">
+                    <input type="email" placeholder="Your email" required />
+                    <button type="submit" class="btn btn-primary btn-sm">JOIN</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 L'Étoile Café Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
